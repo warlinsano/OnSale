@@ -49,7 +49,7 @@ namespace OnSale.Web.Data.Entities
                     return ImageFacebook;
                 }
 
-                return $"https://localhost:44315/images/products/{ImageId}.jpg";
+                return $"https://localhost:44315/images/users/{ImageId}.jpg";
             }
         }
 
