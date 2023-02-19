@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+@*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 <br />
 
 <p>
@@ -109,6 +109,203 @@
 
             // Delete item
             sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Products/Delete/', false);
+        });
+    </script>
+}
+*@
+
+
+
+
+
+
+
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Administracion<small> - Productos</small></h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Buscar !</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Productos<small> - Lista de productos</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        <a asp-action="Create" class="btn btn-primary" style="background-color: #73879C;"><i class="glyphicon glyphicon-plus"></i> Nuevo Producto</a>
+                                        Aqui se muestra una lista de todos los productos registrado en la plataforma.
+                                    </p>
+                                    <table id="" class="table table-striped jambo_table bulk_action Dtable" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Imagen</th>
+                                                <th>Precio</th>
+                                                <th>Esta Activo</th>
+                                                <th>Esta Destacado</th>
+                                                <th>Clasificasion</th>
+                                                <th>Categoria</th>
+                                                <th>Numero de imagens del producto</th>
+                                                <th>Clasificaciones del  Producto</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr style="background-color: silver;">
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                    </td>
+                                                    <td>
+                                                        <img src="@item.ImageFullPath" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.Price)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.IsActive)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.IsStarred)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.Qualification)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.Category.Name)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.ProductImagesNumber)
+                                                    </td>
+                                                    <td>
+                                                            @Html.DisplayFor(modelItem => item.ProductQualifications)
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="glyphicon glyphicon-align-justify"></i></a>
+                                                        <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
+                                                    </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //   $('#example2').DataTable();
+            // $('example1').DataTable({
+            //   'paging'      : true,
+            //   'lengthChange': false,
+            //   'searching'   : false,
+            //   'ordering'    : true,
+            //   'info'        : true,
+            //   'autoWidth'   : false
+            // })
+            //})
+
+            $('.Dtable').DataTable({
+                //    dom: 'lBfrtip',
+                //    buttons: [
+                //                {
+                //                    extend: 'copyHtml5',
+                //                    text: 'Copiar <i class="fa fa-copy"></i>',
+                //                    titleAttr: 'Copiar contenido',
+                //                    className :'btn btn-primary btnBlue'
+                //                },
+                //                {
+                //                    extend: 'excelHtml5',
+                //                    text: 'Excel <i class="fa fa-file-excel-o"></i>',
+                //                    titleAttr: 'Exportar a Excel',
+                //                    className :'btn btn-success btnGreen'
+                //                },
+                //                {
+                //                    extend: 'pdfHtml5',
+                //                    text: 'PDF <i class="fa fa-file-pdf-o"></i>',
+                //                    titleAttr: 'Exportar a PDF',
+                //                    className :'btn btn-danger btnRed'
+                //                },
+                //                {
+                //                    extend: 'csvHtml5',
+                //                    text: 'CSV <i class="fa fa-file-excel-o"></i>',
+                //                    titleAttr: 'Exportar a CSV',
+                //                    className :'btn btn-success btnGreen'
+                //                },
+                //                {
+                //                    extend: 'print',
+                //                    text: 'Imprimir <i class="fa fa-print"></i>',
+                //                    titleAttr: 'Imprimir',
+                //                    className :'btn btn-info btnGray'
+                //                },
+                //            ],
+                responsive: true,
+                lengthChange: true,
+                pageLength: 10,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                language: {
+                    processing: "Procesando",
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ Registros",
+                    info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    infoFiltered: "(Filtro de _MAX_ entradas en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando datos.",
+                    zeroRecords: "No se encontraron datos",
+                    emptyTable: "No hay datos disponibles",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": activer pour trier la colonne par ordre croissant",
+                        sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                    }
+                }
+            });
+
         });
     </script>
 }
