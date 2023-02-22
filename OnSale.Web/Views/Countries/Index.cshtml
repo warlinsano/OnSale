@@ -74,10 +74,6 @@
 *@
 
 
-
-
-
-
 <div class="">
     <div class="page-title">
         <div class="title_left">
@@ -155,12 +151,14 @@
     </div>
 </div>
 
+<partial name="_DeleteDialog" />
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-
-    <script type="text/javascript">
+@*    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.2/sweetalert2.min.js" integrity="sha512-jSNGQoIZ0qago6DK45skZbDI1JC8bmANSwItgDnMXiAnJm0Lq6QB4yXY8QPKqS68iR3ngZi0pM5+wZvg1kCCKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+*@    <script type="text/javascript">
         $(document).ready(function () {
             //   $('#example2').DataTable();
             // $('example1').DataTable({
@@ -171,6 +169,24 @@
             //   'info'        : true,
             //   'autoWidth'   : false
             // })
+            //})
+
+            //Swal.fire({
+            //    title: 'Are you sure?',
+            //    text: "You won't be able to revert this!",
+            //    icon: 'warning',
+            //    showCancelButton: true,
+            //    confirmButtonColor: '#3085d6',
+            //    cancelButtonColor: '#d33',
+            //    confirmButtonText: 'Yes, delete it!'
+            //}).then((result) => {
+            //    if (result.isConfirmed) {
+            //        Swal.fire(
+            //            'Deleted!',
+            //            'Your file has been deleted.',
+            //            'success'
+            //        )
+            //    }
             //})
 
             $('.Dtable').DataTable({
