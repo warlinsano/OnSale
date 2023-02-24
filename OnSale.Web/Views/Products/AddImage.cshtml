@@ -4,27 +4,63 @@
     ViewData["Title"] = "Add Image";
 }
 
-<h2>Add</h2>
-
-<h4>Image</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddImage" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProductId" />
-
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" type="file" class="form-control" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Producto</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Producto <small> - Agregar Imagenes</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form asp-action="AddImage" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProductId" />
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Details" asp-route-id="@Model.ProductId" class="btn btn-success">Back to Product</a>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="">
+                                Imagen:<span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input asp-for="ImageFile" type="file" class="form-control" />
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="submit">Agregar <i class="fa fa-save"></i></button>
+                                <a asp-action="Details" asp-route-id="@Model.ProductId" class="btn btn-success">Back to Product</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
