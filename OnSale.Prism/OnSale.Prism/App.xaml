@@ -9,8 +9,8 @@
 
             <!-- Parameters -->
             <!--<x:String x:Key="UrlAPI">https://onsalezulu.azurewebsites.net</x:String>-->
-            <x:String x:Key="UrlAPI">http://192.168.4.16:5000</x:String>
-            <x:String x:Key="UrlNoImage">http://192.168.4.16:5000/images/noimage.png</x:String>
+            <x:String x:Key="UrlAPI">http://192.168.4.15:5000</x:String>
+            <x:String x:Key="UrlNoImage">http://192.168.4.15:5000/images/noimage.png</x:String>
 
             <!-- Colors -->
             <Color x:Key="ColorBackground">#D9D9D9</Color>  

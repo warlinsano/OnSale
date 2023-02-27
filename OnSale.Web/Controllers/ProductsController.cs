@@ -37,6 +37,39 @@ namespace OnSale.Web.Controllers
                 .Include(p => p.Qualifications)
                 .ToListAsync());
         }
+
+        //TODO: REVISAR
+        public async Task<IActionResult> ListProduct()
+        {
+            return View(await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .Include(p => p.Qualifications)
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> DetailsProduct(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Product product = await _context.Products
+                .Include(c => c.Category)
+                .Include(c => c.ProductImages)
+                .Include(p => p.Qualifications)
+                .ThenInclude(q => q.User)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+        //
+
         public IActionResult Create()
         {
             ProductViewModel model = new ProductViewModel

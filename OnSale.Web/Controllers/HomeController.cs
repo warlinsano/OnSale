@@ -11,6 +11,8 @@ namespace OnSale.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -23,6 +25,7 @@ namespace OnSale.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
