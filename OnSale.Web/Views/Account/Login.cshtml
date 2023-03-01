@@ -51,9 +51,9 @@
     </style>
 </head>
 
-<body class="login" style="background: #B9B9B9;">
+<body class="login" >
 
-  <div class="container">
+    <div class="container" style="background: #B9B9B9;">
 
         <nav class="navbar " style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);">
                 <div class="container-fluid">
@@ -87,7 +87,7 @@
                 </div>
         </nav>
 <section class="h-100 gradient-form" style="background-color: #eee;">
-    <div class="container py-5 h-100">
+    <div class="container py-5 h-150">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
                 <div class="card rounded-3 text-black">
@@ -98,27 +98,27 @@
                                 <div class="text-center">
                                     <img src="~/images/lotus.webp"
                                          style="width: 185px;" alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1">Ventas Online</h4>
+                                    <h4 class="mt-1 mb-5 pb-1">Login</h4>
                                 </div>
                                     <form method="post">
                                       <div asp-validation-summary="ModelOnly"></div>
 
-                                   <p>Por favor, ingrese a su cuenta</p>
+                                   <p>Por favor, ingrese su cuenta</p>
 
                                     <div class="form-outline mb-4">
+                                        <label class="form-label" for="form2Example11">Nombre de usuario</label>
+                                        <input  asp-for="Username" type="email" id="" class="form-control" placeholder="Usuario" />
                                         <span asp-validation-for="Username" class="text-warning"></span>
-                                        <input  asp-for="Username" type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address" />
-                                         <label class="form-label" for="form2Example11">Nombre de usuario</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <label class="form-label" for="form2Example22">Contraseña</label>
+                                        <input asp-for="Password" type="password" id="" class="form-control" placeholder="Contraseña" />
                                         <span asp-validation-for="Password" class="text-warning"></span>
-                                        <input asp-for="Password" type="password" id="form2Example22" class="form-control" />
-                                         <label class="form-label" for="form2Example22">Contraseña</label>
                                     </div>
                                     <div class="form-outline mb-4">
                                             <div class="form-check">
-                                                <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+                                                <input asp-for="RememberMe" type="checkbox" class="form-check-input"  />
                                                 <label asp-for="RememberMe" class="form-check-label">Recuerdame mi cuenta</label>
                                             </div>
                                             <span asp-validation-for="RememberMe" class="text-warning"></span>
@@ -128,7 +128,7 @@
                                         <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" >
                                             Entrar
                                         </button>
-                                         <a class="text-muted" asp-action="RecoverPasswordMVC">Olvidate tu clave?</a>
+                                         <a class="text-muted" asp-action="RecoverPasswordMVC">Olvidaste tu clave?</a>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
