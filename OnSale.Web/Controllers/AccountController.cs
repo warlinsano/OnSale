@@ -392,7 +392,7 @@ namespace OnSale.Web.Controllers
                 _mailHelper.SendMail(model.Email, "Password Reset", $"<h1>Password Reset</h1>" +
                     $"To reset the password click in this link:<p>" +
                     $"<a href = \"{link}\">Reset Password</a></p>");
-                ViewBag.Message = "The instructions to recover your password has been sent to email.";
+                ViewBag.Message = "Las instrucciones para recuperar su contraseña han sido enviadas al correo electrónico.";
                 return View();
 
             }

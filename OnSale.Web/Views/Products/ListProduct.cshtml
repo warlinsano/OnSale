@@ -1,9 +1,16 @@
 ﻿@model IEnumerable<OnSale.Web.Data.Entities.Product>
+@{ ViewData["Title"] = "Index"; Layout = null;}
 
-@{
-    ViewData["Title"] = "Index";
-}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Productos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/images/favicon.ico" type="image/ico" />
+    <partial name="_CssImport" />
+</head>
+<body>
 
     <div class="">
         <div class="page-title">
@@ -30,162 +37,104 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Productos<small> - Lista de productos</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
+                       @* <ul class="nav navbar-right panel_toolbox">
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
-                        </ul>
+                        </ul>*@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box table-responsive">
-                                    <p class="text-muted font-13 m-b-30">
+
+                     <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive" style="background-color: silver;">
+@*                                    <p class="text-muted font-13 m-b-30">
                                         Aqui se muestra una lista de todos los productos registrado en la plataforma.
-                                    </p>
-                   
-                         <!-- price element -->
-                        <div class="col-md-3 col-sm-6  ">
-                          <div class="pricing">
-                            <div class="title">
-                              <h2>Tally Box Design</h2>
-                              <h1>free</h1>
-                            </div>
-                            <div class="x_content">
-                              <div class="">
-                                <div class="pricing_features">
-                                  <ul class="list-unstyled text-left">
-                                    <li><i class="fa fa-times text-danger"></i> 2 years access <strong> to all storage locations</strong></li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> storage</li>
-                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="pricing_footer">
-                                 <a href="javascript:void(0);" class="btn btn-success btn-block" role="button"><i class="fa fa-ellipsis-v"></i> Ver Detalles </a>
-                                <p>
-                                  <a asp-action="Create" class="btn btn-primary btn-block" style="background-color: #73879C;" role="button"><i class="fa fa-shopping-cart"></i> Agregar Producto </a>
-                                </p>
-                               </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- price element -->
+                                    </p>  *@   <br/>  
+                                @foreach (var item in Model)
+                                {
+                                     <!-- price element -->
+                                    <div class="col-md-3 col-sm-6  ">
+                                        <div class="pricing" >
+                                        <div class="title">
+                                            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                                            <h1> @Html.DisplayFor(modelItem => item.Price)</h1>
+                                            <span>@Html.DisplayFor(modelItem => item.Category.Name)</span>
+                                       </div>
+                                       <div class="x_content">
+                                          <div class="">
+                                            <div class="pricing_features" >
+                                                  <img src="~/images/mascotas.png" style="width:200px;height:200px;max-width: 100%; height: auto;" />
+@*                                                <img src="@item.ImageFullPath" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+*@@*                                               img width="200" height="200" src="~/images/mascotas.png" />
+*@                                         @*     <ul class="list-unstyled text-left">
+                                                <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> storage</li>
+                                                <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+                                              </ul>*@
+                                                        <a href="javascript:void(0);" class="btn btn-success btn-block" role="button"><i class="fa fa-ellipsis-v"></i> Ver Detalles </a>
+                                                        <p>
+                                                            <a asp-action="Create" class="btn btn-primary btn-block" style="background-color: #73879C;" role="button"><i class="fa fa-shopping-cart"></i> Agregar Producto </a>
+                                                        </p>
+                                            </div>
+                                          </div>
+                                         @* <div class="pricing_footer">
+                                             <a href="javascript:void(0);" class="btn btn-success btn-block" role="button"><i class="fa fa-ellipsis-v"></i> Ver Detalles </a>
+                                            <p>
+                                              <a asp-action="Create" class="btn btn-primary btn-block" style="background-color: #73879C;" role="button"><i class="fa fa-shopping-cart"></i> Agregar Producto </a>
+                                            </p>
+                                            </div>*@
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- price element -->
+                                }
+                                    
+                                <!-- price element -->
+                                  <!-- 
+                                    <div class="col-md-3 col-sm-6  ">
+                                      <div class="pricing ui-ribbon-container">
+                                        <div class="ui-ribbon-wrapper">
+                                          <div class="ui-ribbon">
+                                            30% Off
+                                          </div>
+                                        </div>
+                                        <div class="title">
+                                          <h2>Tally Box Design</h2>
+                                          <h1>$25</h1>
+                                          <span>Monthly</span>
+                                        </div>
+                                        <div class="x_content">
+                                          <div class="">
+                                            <div class="pricing_features">
+                                              <ul class="list-unstyled text-left">
+                                                <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
+                                                <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
+                                                <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
+                                                <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
+                                                <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+                                                <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
+                                                <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          <div class="pricing_footer">
+                                            <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
+                                            <p>
+                                              <a href="javascript:void(0);">Sign up</a>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  -->
+                                <!-- price element -->
 
-                        <!-- price element -->
-                        <div class="col-md-3 col-sm-6  ">
-                          <div class="pricing ui-ribbon-container">
-                            <div class="ui-ribbon-wrapper">
-                              <div class="ui-ribbon">
-                                30% Off
-                              </div>
-                            </div>
-                            <div class="title">
-                              <h2>Tally Box Design</h2>
-                              <h1>$25</h1>
-                              <span>Monthly</span>
-                            </div>
-                            <div class="x_content">
-                              <div class="">
-                                <div class="pricing_features">
-                                  <ul class="list-unstyled text-left">
-                                    <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
-                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="pricing_footer">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
-                                <p>
-                                  <a href="javascript:void(0);">Sign up</a>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- price element -->
-
-                        <!-- price element -->
-                        <div class="col-md-3 col-sm-6  ">
-                          <div class="pricing">
-                            <div class="title">
-                              <h2>Tally Box Design</h2>
-                              <h1>$25</h1>
-                              <span>Monthly</span>
-                            </div>
-                            <div class="x_content">
-                              <div class="">
-                                <div class="pricing_features">
-                                  <ul class="list-unstyled text-left">
-                                    <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
-                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="pricing_footer">
-                                <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>
-                                <p>
-                                  <a href="javascript:void(0);">Sign up</a>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- price element -->
-
-                        <!-- price element -->
-                        <div class="col-md-3 col-sm-6  ">
-                          <div class="pricing">
-                            <div class="title">
-                              <h2>Tally Box Design</h2>
-                              <h1>$25</h1>
-                              <span>Monthly</span>
-                            </div>
-                            <div class="x_content">
-                              <div class="">
-                                <div class="pricing_features">
-                                  <ul class="list-unstyled text-left">
-                                    <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
-                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="pricing_footer">
-                                <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>
-                                <p>
-                                  <a href="javascript:void(0);">Sign up</a>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- price element -->
-
-                            
-                            
                             </div>
                         </div>
                     </div>
+
+              
                 </div>
             </div>
         </div>
@@ -193,86 +142,12 @@
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-
-    <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
-            //   $('#example2').DataTable();
-            // $('example1').DataTable({
-            //   'paging'      : true,
-            //   'lengthChange': false,
-            //   'searching'   : false,
-            //   'ordering'    : true,
-            //   'info'        : true,
-            //   'autoWidth'   : false
-            // })
-            //})
-
-            $('.Dtable').DataTable({
-                //    dom: 'lBfrtip',
-                //    buttons: [
-                //                {
-                //                    extend: 'copyHtml5',
-                //                    text: 'Copiar <i class="fa fa-copy"></i>',
-                //                    titleAttr: 'Copiar contenido',
-                //                    className :'btn btn-primary btnBlue'
-                //                },
-                //                {
-                //                    extend: 'excelHtml5',
-                //                    text: 'Excel <i class="fa fa-file-excel-o"></i>',
-                //                    titleAttr: 'Exportar a Excel',
-                //                    className :'btn btn-success btnGreen'
-                //                },
-                //                {
-                //                    extend: 'pdfHtml5',
-                //                    text: 'PDF <i class="fa fa-file-pdf-o"></i>',
-                //                    titleAttr: 'Exportar a PDF',
-                //                    className :'btn btn-danger btnRed'
-                //                },
-                //                {
-                //                    extend: 'csvHtml5',
-                //                    text: 'CSV <i class="fa fa-file-excel-o"></i>',
-                //                    titleAttr: 'Exportar a CSV',
-                //                    className :'btn btn-success btnGreen'
-                //                },
-                //                {
-                //                    extend: 'print',
-                //                    text: 'Imprimir <i class="fa fa-print"></i>',
-                //                    titleAttr: 'Imprimir',
-                //                    className :'btn btn-info btnGray'
-                //                },
-                //            ],
-                responsive: true,
-                lengthChange: true,
-                pageLength: 10,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                language: {
-                    processing: "Procesando",
-                    search: "Buscar:",
-                    lengthMenu: "Mostrar _MENU_ Registros",
-                    info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    infoFiltered: "(Filtro de _MAX_ entradas en total)",
-                    infoPostFix: "",
-                    loadingRecords: "Cargando datos.",
-                    zeroRecords: "No se encontraron datos",
-                    emptyTable: "No hay datos disponibles",
-                    paginate: {
-                        first: "Primero",
-                        previous: "Anterior",
-                        next: "Siguiente",
-                        last: "Ultimo"
-                    },
-                    aria: {
-                        sortAscending: ": activer pour trier la colonne par ordre croissant",
-                        sortDescending: ": activer pour trier la colonne par ordre décroissant"
-                    }
-                }
-            });
 
         });
     </script>
-}
+    <partial name="_JsImport" />
+
+ </body>
+ </html>

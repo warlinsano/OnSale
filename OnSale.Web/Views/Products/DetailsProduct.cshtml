@@ -1,8 +1,8 @@
 ﻿@model OnSale.Web.Data.Entities.Product
-@{ViewData["Title"] = "Details";}
+@{ ViewData["Title"] = "Details"; Layout = null;}
 
 
-<div class="">
+@*<div class="">
     <div class="page-title">
         <div class="title_left">
             <h3>E-commerce :: Product Page</h3>
@@ -196,3 +196,336 @@
         }
     </script>
 }
+*@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Productos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/images/favicon.ico" type="image/ico" />
+    <partial name="_CssImport" />
+</head>
+<body>
+
+
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Detalles</h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+            <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                        <h2>@Html.DisplayFor(model => model.Name)</h2>
+                     @*       <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>*@
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="col-md-7 col-sm-7 ">
+                                <div class="product-image">
+                                    <img id="ImgGrand" src="~/images/products/prod-1.jpg" alt="..." />
+                                    <img src="@Model.ImageFullPath" alt="..." style="width:200px;height:200px;max-width: 100%; height: auto;" />
+
+                                </div>
+                                <div class="product_gallery">
+                                    @foreach (var item in Model.ProductImages)
+                                    {
+                                        <a class="ViewImeg">
+                                            <img src="@item.ImageFullPath" alt="..." style="width:200px;height:200px;max-width: 100%; height: auto;" />
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 col-sm-5 " style="border:0px solid #e5e5e5;">
+
+                            <h3 class="prod_title">@Html.DisplayFor(model => model.Name)</h3>
+
+                            <p>
+                                @Html.DisplayFor(model => model.Description)
+                            </p>
+                                <br />
+
+                                <div class="">
+                                    <h2>Available Colors</h2>
+                                    <ul class="list-inline prod_color display-layout">
+                                        <li>
+                                            <p>Green</p>
+                                            <div class="color bg-green"></div>
+                                        </li>
+                                        <li>
+                                            <p>Blue</p>
+                                            <div class="color bg-blue"></div>
+                                        </li>
+                                        <li>
+                                            <p>Red</p>
+                                            <div class="color bg-red"></div>
+                                        </li>
+                                        <li>
+                                            <p>Orange</p>
+                                            <div class="color bg-orange"></div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <br />
+
+                                <div class="">
+                                    <h2>Size <small>Please select one</small></h2>
+                                    <ul class="list-inline prod_size display-layout">
+                                        <li>
+                                            <button type="button" class="btn btn-default btn-xs">Small</button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="btn btn-default btn-xs">Medium</button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="btn btn-default btn-xs">Large</button>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br />
+
+                                <div class="">
+                                    <div class="product_price">
+                                    <h1 class="price">
+                                        @Html.DisplayFor(model => model.Price)
+                                    </h1>
+                                        <span class="price-tax">Ex Tax: Ksh80.00</span>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <a class="btn btn-primary btn-block" style="background-color: #73879C;" role="button" href="/Products/Create"><i class="fa fa-shopping-cart"></i> Agregar Producto </a>
+                                     <a class="btn btn-danger btn-block" style="background-color: blue;" role="button" href="/Products/Create"><i class="fa fa-comment"></i> Agregar cometario </a>
+                                </div>
+
+                                <div class="product_social">
+                                    <ul class="list-inline display-layout">
+                                        <li>
+                                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-envelope-square"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-rss-square"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-12">
+
+                                <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Comentario</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="panel-body">
+                                            <table id="" class="table table-striped jambo_table bulk_action Dtable" style="width:100%">
+                                                <colgroup>
+                                                    <col span="1" />
+                                                    <col span="1" />
+                                                    <col span="1" />
+                                                    <col span="1" width="400" />
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Fecha
+                                                        </th>
+                                                        <th>
+                                                            Email
+                                                        </th>
+                                                        <th>
+                                                            Puntaje
+                                                        <th>
+                                                            Observasion (Comentario)
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.Qualifications)
+                                                    {
+                                                        <tr style="background-color: silver;">
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DateLocal)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.User.Email)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Score)
+                                                            </td>
+                                                            <td>
+                                                                @{
+                                                                    string[] noteWords = item.Remarks.Split(' ');
+                                                                    if (noteWords.Count() > 7)
+                                                                    {
+                                                                        <a class="" role="button" data-toggle="collapse" href="#collapseSum@(item.Id)" aria-expanded="false" aria-controls="collapseSum@(item.Id)">
+                                                                            @(string.Join(" ", noteWords.Take(7)) + "...")
+                                                                        </a>
+                                                                        <div class="collapse" id="collapseSum@(item.Id)">
+                                                                            <div class="well">
+                                                                                @(string.Join(" ", noteWords.Skip(7)))
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @item.Remarks
+                                                                    }
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                        booth letterpress, commodo enim craft beer mlkshk aliquip
+                                    </div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                        booth letterpress, commodo enim craft beer mlkshk
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <partial name="_JsImport" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.Dtable').DataTable({
+                //    dom: 'lBfrtip',
+                //    buttons: [
+                //                {
+                //                    extend: 'copyHtml5',
+                //                    text: 'Copiar <i class="fa fa-copy"></i>',
+                //                    titleAttr: 'Copiar contenido',
+                //                    className :'btn btn-primary btnBlue'
+                //                },
+                //                {
+                //                    extend: 'excelHtml5',
+                //                    text: 'Excel <i class="fa fa-file-excel-o"></i>',
+                //                    titleAttr: 'Exportar a Excel',
+                //                    className :'btn btn-success btnGreen'
+                //                },
+                //                {
+                //                    extend: 'pdfHtml5',
+                //                    text: 'PDF <i class="fa fa-file-pdf-o"></i>',
+                //                    titleAttr: 'Exportar a PDF',
+                //                    className :'btn btn-danger btnRed'
+                //                },
+                //                {
+                //                    extend: 'csvHtml5',
+                //                    text: 'CSV <i class="fa fa-file-excel-o"></i>',
+                //                    titleAttr: 'Exportar a CSV',
+                //                    className :'btn btn-success btnGreen'
+                //                },
+                //                {
+                //                    extend: 'print',
+                //                    text: 'Imprimir <i class="fa fa-print"></i>',
+                //                    titleAttr: 'Imprimir',
+                //                    className :'btn btn-info btnGray'
+                //                },
+                //            ],
+                responsive: true,
+                lengthChange: true,
+                pageLength: 10,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                language: {
+                    processing: "Procesando",
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ Registros",
+                    info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    infoFiltered: "(Filtro de _MAX_ entradas en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando datos.",
+                    zeroRecords: "No se encontraron datos",
+                    emptyTable: "No hay datos disponibles",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": activer pour trier la colonne par ordre croissant",
+                        sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
