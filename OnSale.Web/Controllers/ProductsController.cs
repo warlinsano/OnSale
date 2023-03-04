@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OnSale.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly DataContext _context;
@@ -29,6 +29,7 @@ namespace OnSale.Web.Controllers
             _converterHelper = converterHelper;
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Products
@@ -47,6 +48,7 @@ namespace OnSale.Web.Controllers
                 .Include(p => p.Qualifications)
                 .ToListAsync());
         }
+
 
         public async Task<IActionResult> DetailsProduct(int? id)
         {
@@ -70,6 +72,7 @@ namespace OnSale.Web.Controllers
         }
         //
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ProductViewModel model = new ProductViewModel
@@ -81,6 +84,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductViewModel model)
@@ -125,6 +129,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -145,6 +150,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProductViewModel model)
@@ -191,6 +197,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -219,6 +226,7 @@ namespace OnSale.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -240,6 +248,7 @@ namespace OnSale.Web.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddImage(int? id)
         {
             if (id == null)
@@ -257,6 +266,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddImage(AddProductImageViewModel model)
@@ -294,6 +304,7 @@ namespace OnSale.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteImage(int? id)
         {
             if (id == null)

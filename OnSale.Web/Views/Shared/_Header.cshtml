@@ -26,24 +26,21 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a></li>
-                            <li><a href="index2.html">Dashboard2</a></li>
-                        </ul>
+                         <a asp-area="" asp-controller="Products" asp-action="ListProduct"><i class="fa fa-home"></i>Inicio</a>
                     </li>
                     <li>
-                        <a><i class="fa fa-bar-chart-o"></i> Ventas <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a asp-area="" asp-controller="Orders" asp-action="Index">Ordenes</a></li>
-                            <li><a asp-area="" asp-controller="Products" asp-action="Index">Productos</a></li>
-                            <li><a asp-area="" asp-controller="Categories" asp-action="Index">Categorias</a></li>
-                            <li><a asp-area="" asp-controller="Countries" asp-action="Index">Paises</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
+                        <a asp-area="" asp-controller="Orders" asp-action="MyOrders">
                             <i class="fa fa-list"></i> Mis Ordenes
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Orders" asp-action="ShoppingCart">
+                            <i class="fa fa-shopping-cart"></i> Carrito de Compra
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Account" asp-action="ChangeUser">
+                            <i class="fa fa-user"></i> Perfil
                         </a>
                     </li>
                 </ul>
@@ -53,6 +50,22 @@
             <div class="menu_section">
                 <h3>Admin</h3>
                 <ul class="nav side-menu">
+                    <li>
+                            <a><i class="fa fa-bar-chart-o"></i> Ventas <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a asp-area="" asp-controller="Orders" asp-action="Index">Ordenes</a></li>
+                                <li><a asp-area="" asp-controller="Products" asp-action="Index">Productos</a></li>
+                                <li><a asp-area="" asp-controller="Categories" asp-action="Index">Categorias</a></li>
+                                <li><a asp-area="" asp-controller="Countries" asp-action="Index">Paises</a></li>
+                            </ul>
+                    </li>
+                    <li>
+                            <a><i class="fa fa-line-chart"></i>Reporte<span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                                <li><a href="index2.html">Dashboard2</a></li>
+                            </ul>
+                    </li>
                     <li>
                         <a><i class="fa fa-table"></i> Administracion<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
