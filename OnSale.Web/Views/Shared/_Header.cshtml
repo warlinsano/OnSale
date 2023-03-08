@@ -9,7 +9,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Bienvenido(a),</span>
@@ -113,14 +113,14 @@
             <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                        <img src="images/img.jpg" alt="">@User.Identity.Name
+                        <img src="~/images/img.jpg" alt="">@User.Identity.Name
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="javascript:;"> Perfil</a>
-                        <a class="dropdown-item" href="javascript:;">
+                        <a asp-area="" asp-controller="Account" asp-action="ChangeUser" class="dropdown-item" > Perfil</a>
+               @*         <a class="dropdown-item" href="javascript:;">
                             <span class="badge bg-red pull-right">50%</span>
                             <span>Configuracion</span>
-                        </a>
+                        </a>*@
                         <a class="dropdown-item" href="javascript:;">Ayuda</a>
                         <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><i class="fa fa-sign-out pull-right"></i>Salir</a>
                     </div>
@@ -134,7 +134,7 @@
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span class="image"><img src="~/images/img.jpg" alt="Profile Image" /></span>
                                 <span>
                                     <span>John Smith</span>
                                     <span class="time">3 mins ago</span>
@@ -146,7 +146,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span class="image"><img src="~/images/img.jpg" alt="Profile Image" /></span>
                                 <span>
                                     <span>John Smith</span>
                                     <span class="time">3 mins ago</span>
@@ -158,7 +158,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span class="image"><img src="~/images/img.jpg" alt="Profile Image" /></span>
                                 <span>
                                     <span>John Smith</span>
                                     <span class="time">3 mins ago</span>
@@ -170,7 +170,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item">
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span class="image"><img src="~/images/img.jpg" alt="Profile Image" /></span>
                                 <span>
                                     <span>John Smith</span>
                                     <span class="time">3 mins ago</span>
